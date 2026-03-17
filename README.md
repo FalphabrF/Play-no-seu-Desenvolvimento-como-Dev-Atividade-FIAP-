@@ -33,7 +33,6 @@ h. Na disciplina de Formação Social, o grupo resumirá o artigo disponível no
 ├── python
 │   ├── main.py
 │   ├── calculos_agricolas.py
-│   └── dados.py
 │
 ├── r
 │   └── analise_fazenda.R
@@ -65,12 +64,6 @@ CRUD do vetor
 calculos_agricolas.py
 
 Contém apenas a lógica matemática.
-}
-
-{
-dados.py
-
-Arquivo responsável pelo vetor de armazenamento.
 }
 
 {
