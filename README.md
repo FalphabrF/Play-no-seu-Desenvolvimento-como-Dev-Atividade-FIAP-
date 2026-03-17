@@ -44,3 +44,104 @@ h. Na disciplina de Formação Social, o grupo resumirá o artigo disponível no
 │
 ├── README.md
 ├── requirements.txt
+
+{
+main.py
+
+Arquivo principal do sistema.
+
+Aqui fica:
+
+menu principal
+
+loop while
+
+chamadas das funções
+
+CRUD do vetor
+}
+
+{
+calculos_agricolas.py
+
+Contém apenas a lógica matemática.
+}
+
+{
+dados.py
+
+Arquivo responsável pelo vetor de armazenamento.
+}
+
+{
+    Pasta r
+
+Contém o script da análise estatística.
+
+Arquivo:
+
+analise_fazenda.R
+
+Esse script fará:
+
+média
+
+desvio padrão
+
+chamada da API meteorológica
+}
+
+{
+    Pasta docs
+
+Arquivos de entrega.
+
+docs
+
+Conteúdo:
+
+resumo_artigo.pdf
+
+Resumo do artigo da Embrapa.
+
+Requisitos:
+
+1 página
+
+Arial 11
+
+espaçamento 1
+
+margens 2 cm
+}
+
+{
+link_video.txt
+
+Arquivo simples contendo o link do YouTube.
+}
+
+{
+    requirements.txt
+
+Dependências do projeto.
+
+Para este projeto:
+
+requests
+
+Caso decidam usar API também no Python
+}
+
+{
+.gitignore
+
+Evita subir arquivos desnecessários.
+
+Conteúdo recomendado:
+
+__pycache__/
+*.pyc
+.env
+.DS_Store
+}
