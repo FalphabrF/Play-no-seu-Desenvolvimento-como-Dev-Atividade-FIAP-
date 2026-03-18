@@ -1,5 +1,5 @@
 #Calcula a AREA do terreno da cultura
-def c(base, altura):
+def calcular_area(base, altura):
     area = base * altura
     return area
 
