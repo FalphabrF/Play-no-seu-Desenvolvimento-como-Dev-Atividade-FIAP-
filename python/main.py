@@ -19,22 +19,31 @@ while True:
     opcao = input("\nEscolha uma opção: ")
 
     if opcao == "1":
-        # Aqui você insere a lógica de entrada que conversamos antes
         print("\n--- CADASTRO DE PLANTIO ---")
-        nome = input("Cultura (Cana/Laranja): ")
-        b = float(input("Base: "))
-        h = float(input("Altura: "))
-        
-        area_at = calcular_area(b, h)
-        if nome.lower() == "cana":
-            insumo_at = insumo_cana(area_at)
-        else:
-            insumo_at = insumo_laranja(area_at)
+        try:
+            nome = input("Cultura (Cana/Laranja): ")
+            b = float(input("Base (metros): "))
+            h = float(input("Altura (metros): "))
             
-        nomes_culturas.append(nome)
-        areas_calculadas.append(area_at)
-        quantidade_insumo.append(insumo_at)
-        print("Cadastrado com sucesso!")
+            # Aqui chamamos as funções do seu colega (Membro 1)
+            area_at = calcular_area(b, h)
+            
+            if nome.lower() == "cana":
+                insumo_at = insumo_cana(area_at)
+            else:
+                insumo_at = insumo_laranja(area_at)
+            
+            # Guardando tudo nos seus vetores (Listas)
+            nomes_culturas.append(nome)
+            areas_calculadas.append(area_at)
+            quantidade_insumo.append(insumo_at)
+            
+            print("\n[SUCESSO] Dados salvos com sucesso!")
+
+        except ValueError:
+            # Se o usuário digitar 'dez' em vez de '10', ele cai aqui:
+            print("\n[ERRO] Por favor, use apenas números para Base e Altura.")
+            print("Retornando ao menu principal...")
 
     elif opcao == "2":
         print("\n--- RELATÓRIO ---")
@@ -71,26 +80,38 @@ while True:
 
     elif opcao == "4":
         print("\n--- DELETAR REGISTRO ---")
-        if len(nomes_culturas) == 0:
-            print("Nenhum dado para deletar.")
-        else:
-            # Listar antes de deletar ajuda o usuário
+        
+        # Primeiro, verificamos se existe algo cadastrado (len > 0)
+        if len(nomes_culturas) > 0:
+            # Mostramos a lista para o usuário ver o ID que quer apagar
             for i in range(len(nomes_culturas)):
                 print(f"ID: {i} | Cultura: {nomes_culturas[i]}")
-                
-            idx = int(input("Digite o ID que deseja remover: "))
             
-            if idx >= 0 and idx < len(nomes_culturas):
-                removido = nomes_culturas.pop(idx)
-                areas_calculadas.pop(idx)
-                quantidade_insumo.pop(idx)
-                print(f"Registro de {removido} removido com sucesso!")
-            else:
-                print("ID inválido!")
-
-    elif opcao == "5":
-        print("Finalizando o sistema da FarmTech. Até logo!")
-        break
+            try:
+                idx = int(input("\nDigite o ID que deseja remover: "))
+                
+                # Verificamos se o número que ele digitou existe na lista
+                if 0 <= idx < len(nomes_culturas):
+                    # O comando .pop(idx) remove o item daquela posição
+                    removido = nomes_culturas.pop(idx)
+                    areas_calculadas.pop(idx)
+                    quantidade_insumo.pop(idx)
+                    
+                    print(f"\n[SUCESSO] Registro de {removido} removido!")
+                else:
+                    print("\n[ERRO] Esse ID não existe.")
+            
+            except ValueError:
+                print("\n[ERRO] Digite apenas o número do ID.")
         
-    else:
-        print("Opção inválida! Tente novamente.")
+        else:
+            # Se a lista estiver vazia (len == 0), ele cai aqui:
+            print("\n[AVISO] Não há nenhum dado cadastrado para deletar.")
+        
+    elif opcao == "5":
+         print("\n" + "="*30)
+         print("Dados da sessão encerrados.")
+         print("    Até a próxima!")
+         print("="*30)
+         break #Encerra o programa.
+             
